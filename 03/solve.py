@@ -4,7 +4,8 @@ import re
 
 def parse_claim(string_input):
     """
-    Read claim, output tuple with parameters
+    Input: string claim
+    Output: tuple with parameters, each in int
     
     A claim like #123 @ 3,2: 5x4 
     means that claim ID 123 
@@ -24,6 +25,10 @@ def parse_claim(string_input):
         height = int(matched.group(10))
 
     return claim_id, from_the_left, from_the_top, width, height
+
+
+def create_shape_coordinates(tuple_input):
+    claim_id, from_the_left, from_the_top, width, height = tuple_input
 
 
 #%%
