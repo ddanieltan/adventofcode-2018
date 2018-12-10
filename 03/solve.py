@@ -1,5 +1,6 @@
 #%%
 import re
+import itertools
 
 
 def parse_claim(string_input):
@@ -27,6 +28,7 @@ def parse_claim(string_input):
     return claim_id, from_the_left, from_the_top, width, height
 
 
+#%%
 def create_shape_coordinates(tuple_input, length_of_canvas):
     """
     Input: parsed claims(tuple), length of canvas
@@ -53,9 +55,44 @@ def create_shape_coordinates(tuple_input, length_of_canvas):
 
 
 #%%
+def overlap(coordinates1, coordinates2):
+    """
+    Input: 2 array of coordinates
+    Output: array of overlapping coordinates
+    """
+    c1 = set(coordinates1)
+    c2 = set(coordinates2)
+    overlapping_coordinates = list(c1.intersection(c2))
+
+    return sorted(overlapping_coordinates)
+
+
+#%%
+def handle_claims(list_of_claims, length_of_canvas):
+    combinations = itertools.combinations(list_of_claims, 2)
+    overlapping_coordinates = []
+    for c in combinations:
+        claim_a = c[0]
+        claim_b = c[1]
+
+        parsed_a = parse_claim(claim_a)
+        parsed_b = parse_claim(claim_b)
+
+        coord_a = create_shape_coordinates(parsed_a, length_of_canvas)
+        coord_b = create_shape_coordinates(parsed_b, length_of_canvas)
+        output = overlap(coord_a, coord_b)
+        if output != []:
+            overlapping_coordinates += output
+
+    # return overlapping_coordinates
+    return len(overlapping_coordinates)
+
+
+#%%
 test = "#123 @ 3,2: 5x4"
 tuple_input = parse_claim(test)
 create_shape_coordinates(tuple_input, 10)
 
 #%%
-create_shape_coordinates((1, 1, 3, 4, 4), 8)
+aa = ["#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2"]
+handle_claims(aa, 8)
