@@ -1,4 +1,5 @@
-from solve import *
+# from solve import *
+from solve import solve1, solve2
 
 
 def test_identify_2_repeat_letters():
