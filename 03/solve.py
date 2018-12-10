@@ -89,6 +89,13 @@ def handle_claims(list_of_claims, length_of_canvas):
 
 
 #%%
+with open("input.txt", "r") as f:
+    length_of_canvas = 1000
+    ans1 = handle_claims((f.read().splitlines()), length_of_canvas)
+
+    print(f"Ans for part 1: {ans1}")
+
+#%%
 test = "#123 @ 3,2: 5x4"
 tuple_input = parse_claim(test)
 create_shape_coordinates(tuple_input, 10)
