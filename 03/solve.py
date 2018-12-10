@@ -28,15 +28,28 @@ def parse_claim(string_input):
 
 
 def create_shape_coordinates(tuple_input, length_of_canvas):
+    """
+    Input: parsed claims(tuple), length of canvas
+    Output: 
+    
+    """
+
     claim_id, from_the_left, from_the_top, width, height = tuple_input
+    coordinates = []
 
     shape_bottom_left_corner = (
         from_the_left + 1,
         length_of_canvas - from_the_top - height,
     )
-    print(shape_bottom_left_corner)
 
-    return
+    for y in range(shape_bottom_left_corner[1], length_of_canvas - from_the_top, 1):
+
+        for x in range(
+            shape_bottom_left_corner[0], shape_bottom_left_corner[0] + width, 1
+        ):
+            coordinates.append((x, y))
+
+    return coordinates
 
 
 #%%
@@ -44,3 +57,6 @@ test = "#123 @ 3,2: 5x4"
 tuple_input = parse_claim(test)
 create_shape_coordinates(tuple_input, 10)
 
+#%%
+for i in range(4, 8, 1):
+    print(i)
