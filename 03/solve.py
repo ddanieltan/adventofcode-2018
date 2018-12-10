@@ -30,7 +30,7 @@ def parse_claim(string_input):
 def create_shape_coordinates(tuple_input, length_of_canvas):
     """
     Input: parsed claims(tuple), length of canvas
-    Output: 
+    Output: array of coordinates representing the shape of the claim
     
     """
 
@@ -39,17 +39,17 @@ def create_shape_coordinates(tuple_input, length_of_canvas):
 
     shape_bottom_left_corner = (
         from_the_left + 1,
-        length_of_canvas - from_the_top - height,
+        length_of_canvas - from_the_top - height + 1,
     )
 
-    for y in range(shape_bottom_left_corner[1], length_of_canvas - from_the_top, 1):
+    for y in range(shape_bottom_left_corner[1], length_of_canvas - from_the_top + 1, 1):
 
         for x in range(
             shape_bottom_left_corner[0], shape_bottom_left_corner[0] + width, 1
         ):
             coordinates.append((x, y))
 
-    return coordinates
+    return sorted(coordinates)
 
 
 #%%
@@ -58,5 +58,4 @@ tuple_input = parse_claim(test)
 create_shape_coordinates(tuple_input, 10)
 
 #%%
-for i in range(4, 8, 1):
-    print(i)
+create_shape_coordinates((1, 1, 3, 4, 4), 8)
