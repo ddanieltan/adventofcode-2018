@@ -32,9 +32,30 @@ def parse_claim(string_input):
 
 
 #%%
-canvas = np.zeros((10, 10), dtype=np.int)
+#%%
+length_of_canvas = 1000
+canvas = np.zeros((length_of_canvas, length_of_canvas), dtype=np.int)
+with open("input.txt", "r") as f:
+    data = f.read().splitlines()
+    for d in data:
+        c = parse_claim(d)
+        canvas[
+            c.get("from_the_top") : c.get("from_the_top") + c.get("height"),
+            c.get("from_the_left") : c.get("from_the_left") + c.get("width"),
+        ] += 1
 
-c = parse_claim("#1 @ 1,3: 4x4")
-print(c)
-# claim=canvas[c[3]:c[3]+c[5],c[1]:c[1]+c[4]]
-# print(claims)
+    output1 = np.sum(np.where(canvas > 1, 1, 0))
+    print(f"Ans for part1: {output1}")
+
+for line in open("input.txt", "r"):  # interesting alternative to `with open()`
+    c = parse_claim(line)
+    if np.all(
+        canvas[
+            c.get("from_the_top") : c.get("from_the_top") + c.get("height"),
+            c.get("from_the_left") : c.get("from_the_left") + c.get("width"),
+        ]
+        == 1
+    ):
+        output2 = c.get("claim_id")
+        print(f"Ans for part 2: {output2}")
+
