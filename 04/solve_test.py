@@ -1,4 +1,4 @@
-from solve import *
+from solve import parse_record
 
 
 def test_parse_1_string():
