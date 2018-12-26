@@ -1,4 +1,4 @@
-from solve import *
+from solve import calc_reaction
 
 
 def test_aA():
@@ -6,7 +6,7 @@ def test_aA():
 
 
 def test_abBa():
-    assert calc_reaction("abBa") == ""
+    assert calc_reaction("abBa") == "aa"
 
 
 def test_abAB():

@@ -18,8 +18,9 @@ def calc_reaction(string_input):
 
 
 #%%
-for line in open("input.txt", "r"):
-    print(calc_reaction(line))
+def solve():
+    for line in open("05/input.txt", "r"):
+        string_input = line.strip()
 
-#%%
-!pwd
+    print(f"Part 1 solution: {len(calc_reaction(string_input))}")
+
