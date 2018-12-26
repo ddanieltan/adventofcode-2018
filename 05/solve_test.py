@@ -6,7 +6,7 @@ def test_aA():
 
 
 def test_abBa():
-    assert calc_reaction("aA") == ""
+    assert calc_reaction("abBa") == ""
 
 
 def test_abAB():
@@ -15,3 +15,4 @@ def test_abAB():
 
 def test_aabAAB():
     assert calc_reaction("aabAAB") == "aabAAB"
+
