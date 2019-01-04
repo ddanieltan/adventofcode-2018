@@ -55,3 +55,12 @@ def find_order(lines):
 
     return "".join(final_order)
 
+
+#%%
+def solve1():
+    with open("07/input.txt") as f:
+        lines = f.read()
+    print(find_order(lines))
+
+
+solve1()
