@@ -64,3 +64,62 @@ def solve1():
 
 
 solve1()
+
+#%%
+time_taken = {}
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+for idx, letter in enumerate(alphabet):
+    time_taken[letter] = idx + 61
+time_taken.get("B")
+
+#%%
+steps = "BFGKNRTWXIHPUMLQVZOYJACDSE"
+time = 0
+work_schedule = {}  # worker_id: (step, start, end)
+workers_pool = set(range(3))
+# use 1 worker
+
+current_worker = workers_pool.pop()
+next_step = steps[0]
+time_required = time_taken.get(next_step)
+work_schedule[current_worker] = (next_step, time, time + time_required)
+steps = steps[1:]
+time += 1
+
+for worker_id, values in work_schedule.items():
+    if (values[2]) == time:
+        pass  #
+# update work schedule
+# worker_id=0, working on step C, start at 0 sec, end at 63
+
+# time++
+# each loop, check if end time is reached. add worker back to pool
+
+
+#%%
+steps = "BFGKNRTWXIHPUMLQVZOYJACDSE"
+solve11 = solve11[1:]
+solve11[0]
+
+#%%
+
+#%%
+for time in range(10):
+    steps = "BFGKNRTWXIHPUMLQVZOYJACDSE"
+    work_schedule = {}  # worker_id: (step, start, end)
+    workers_pool = set(range(3))
+
+    current_worker = workers_pool.pop()
+    next_step = steps[0]
+    time_required = time_taken.get(next_step)
+    # work_schedule[current_worker]=(next_step,time,time+time_required)
+    work_schedule[current_worker] = (next_step, time, 3)
+
+    steps = steps[1:]
+
+    for worker_id, values in work_schedule.items():
+        if (values[2]) == time:
+            workers_pool.add(worker_id)
+    print(work_schedule)
+    time += 1
+
